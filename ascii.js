@@ -1,14 +1,10 @@
 const sharp = require('sharp');
 
-class Ascii {
-    
-    constructor() {
-        console.log("Ascii constructor");
-    }
+class Ascii { 
 
     async getMetaData(path) {
         const { data, info } = await sharp(path)
-            .resize(48 , 48)
+            .resize(32 , 32)
             .raw()
             .toBuffer({ resolveWithObject: true });
             
@@ -45,7 +41,7 @@ class Ascii {
     async convertToAscii(path) {
         // Need to convert rgbOfImage to ascii
         let rgbOfImage = await this.getMetaData(path);
-        console.log(rgbOfImage);
+ 
         let asciiOfImage = [];
 
         let asciiSymbols = ".:-=+*#%@"; 
